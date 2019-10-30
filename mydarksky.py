@@ -8,7 +8,6 @@ def writeHTML(datajson,entry1, entry2):
     ofile = open("darksky.html", "w")
     ofile.write("<h1>" + datajson['timezone'] + "</h1>")
     ofile.write("<p1>" + datajson['currently']['summary'] + "</p1>")
-    ofile.write("<p2>" + datajson['minutely']['data']['precipType'] + "</p2>")
     ofile.write("<link rel='stylesheet' href='https://unpkg.com/leaflet@1.4.0/dist/leaflet.css'/>")
     ofile.write("<script src='https://unpkg.com/leaflet@1.4.0/dist/leaflet.js'></script>")
     ofile.write("<div id='map' style='width:100%; height:500'></div>")
@@ -25,9 +24,8 @@ def writeHTML(datajson,entry1, entry2):
 def getAPI():
     myrequest = requests.get("https://api.darksky.net/forecast/a66a8c56aa21d5a6a7b28ae5f5bd97fc/"+entry1.get() + "," + entry2.get()) #requests data from a server online
     datajson = myrequest.json()
-    writeHTML(datajson,entry1.get(), entry2.get())
+    writeHTML(datajson,entry1.get(), entry2.get())  
     
-
 root = Tk()
 root.title("DarkSky Launcher")
 root.geometry("800x400")
